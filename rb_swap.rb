@@ -9,7 +9,7 @@ original=ARGV[0]
 replacement=ARGV[1]
 search_path="**/*" + original + "*"
 Dir[search_path].each do |f|
-  target = f.gsub(original, replacement)
+  target = f.gsub(Regexp.quote(original), replacement)
   puts "from #{f} to #{target}" if DRY_RUN
   FileUtils.mv f, target, force: true unless DRY_RUN
 end
