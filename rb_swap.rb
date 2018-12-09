@@ -20,7 +20,7 @@ all_files.each do |file_name|
   next if file_name == "rb_swap.rb" # No idea!
   text = File.read(File.join(Dir.pwd, file_name))
   if text.include?(original)
-    replacement_text = text.gsub(original, replacement)
+    replacement_text = text.gsub(Regexp.quote(original), Regexp.quote((replacement))
     puts File.join(Dir.pwd, file_name) if DRY_RUN
     File.open(file_name, "w") { |file| file.puts replacement_text } unless DRY_RUN
   end
