@@ -3,12 +3,13 @@
 require 'fileutils'
 fail "Needs 2 arguments (find, replace)" unless ARGV.length == 2
 
-DRY_RUN = true
+DRY_RUN = false
 
 original=ARGV[0]
 replacement=ARGV[1]
 search_path="**/*" + original + "*"
 Dir[search_path].each do |f|
+  target = ""
   target = f.gsub(Regexp.quote(original), replacement)
   puts "from #{f} to #{target}" if DRY_RUN
   FileUtils.mv f, target, force: true unless DRY_RUN
