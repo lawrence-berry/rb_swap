@@ -3,7 +3,7 @@
 require 'fileutils'
 fail "Needs 2 arguments (find, replace)" unless ARGV.length == 2
 
-DRY_RUN = false
+DRY_RUN = true
 
 original=ARGV[0]
 replacement=ARGV[1]
