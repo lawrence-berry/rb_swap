@@ -12,7 +12,7 @@ Dir[search_path].each do |f|
   target = ""
   target = f.gsub(Regexp.quote(original), replacement)
   puts "from #{f} to #{target}" if DRY_RUN
-  FileUtils.mv f, target, force: true unless DRY_RUN
+  FileUtils.mv Regexp.quote(f), Regexp.quote(target), force: true unless DRY_RUN
 end
 
 all_files = Dir.glob("**/*")
